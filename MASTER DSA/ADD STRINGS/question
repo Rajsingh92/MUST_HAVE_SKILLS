@@ -1,0 +1,30 @@
+Add Strings | Easy | Apple, Facebook, Google, Microsoft |
+
+Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string.
+
+ 
+
+Example 1:
+
+Input: num1 = "11", num2 = "123"
+Output: "134"
+
+
+
+
+
+
+
+Add Binary
+
+Given two binary strings a and b, return their sum as a binary string.
+
+ 
+
+Example 1:
+
+Input: a = "11", b = "1"
+Output: "100"
+
+
+
