@@ -52,9 +52,7 @@ class Solution {
                     st.push(val);
                 } else if (st.size() != 0 && st.peek() == -val) {
                     st.pop();
-                } else if (st.size() != 0 && st.peek() > -val) {
-                    // no need to insert
-                }
+                } 
             }
         }
 

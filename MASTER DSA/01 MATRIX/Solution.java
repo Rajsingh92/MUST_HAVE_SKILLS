@@ -2,7 +2,7 @@ import java.util.*;
 
 class Solution {
     public int[][] updateMatrix(int[][] mat) {
-        LinkedList<int[]> queue = new LinkedList<>();
+        LinkedList<int[]> queue = new LinkedList<int[]>();
 
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
