@@ -1,25 +1,6 @@
 
 public class Main {
-    static class Edge {
-        int src;
-        int nbr;
-
-        Edge(int src, int nbr) {
-            this.src = src;
-            this.nbr = nbr;
-        }
-    }
-
-    public static void topologicalSort(ArrayList<Edge>[] graph, boolean[] visited, int src, Stack<Integer> st) {
-        visited[src] = true;
-
-        for (Edge e : graph[src]) {
-            if (visited[e.nbr] == false)
-                topologicalSort(graph, visited, e.nbr, st);
-        }
-
-        st.push(src);
-    }
+ 
 
     public static void KahnsAlgo() {
         int[] indegree = new int[N];
@@ -54,24 +35,6 @@ public class Main {
         else
             System.out.println(ans);
     }
-
-    public static void main(String[] args) {
-
-        boolean[] visited = new boolean[vtces];
-        Stack<Integer> st = new Stack<>();
-
-        for (int v = 0; v < vtces; v++) {
-            if (visited[v] == false) {
-                topologicalSort(graph, visited, v, st);
-            }
-        }
-
-        while (st.size() > 0) {
-            System.out.println(st.pop());
-        }
-
-    }
-
 }
 
 
