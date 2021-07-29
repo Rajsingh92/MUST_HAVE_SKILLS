@@ -1,7 +1,5 @@
 class Solution {
     static long nCr(int n, int r) {
-
-        // return nCr_rec(n,r);
         return nCr_DP(n, r);
     }
 
