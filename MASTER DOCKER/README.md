@@ -1,1 +1,0 @@
-Plural Sight - Docker
