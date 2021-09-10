@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="login-form bg-light mt-4 p-4">
+                    <form action="" method="POST" class="row g-3">
+                        {{ form.hidden_tag() }}
+                        <h4>Assign Department</h4>
+                        <div class="col-12">
+                            {{ form.department.label }}
+                            {% if form.department.errors %}
+                                {{ form.department(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.department.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.department(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="col-12">
+                            {{ form.role.label }}
+                            {% if form.role.errors %}
+                                {{ form.role(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.role.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.role(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="col-12">
+                            {{ form.submit(class="btn btn-dark float-end") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
