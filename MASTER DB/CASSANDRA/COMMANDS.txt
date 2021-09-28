@@ -1,4 +1,0 @@
-cassandra
-
-docker-compose exec n1 nodetool status
-docker-compose exec n1 more etc/cassandra/cassandra.yaml
