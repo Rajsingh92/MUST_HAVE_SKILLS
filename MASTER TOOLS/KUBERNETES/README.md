@@ -1,1 +1,0 @@
-https://app.pluralsight.com/paths/skills/using-kubernetes-as-a-developer
