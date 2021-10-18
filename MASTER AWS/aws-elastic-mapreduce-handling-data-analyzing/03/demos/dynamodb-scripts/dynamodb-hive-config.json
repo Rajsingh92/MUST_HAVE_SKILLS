@@ -1,0 +1,8 @@
+[
+    {
+        "Classification": "hive-site",
+        "Properties": {
+            "hive.execution.engine": "mr"
+        }
+    }
+ ]

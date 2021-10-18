@@ -1,0 +1,14 @@
+[
+    {
+       "Name": "Counting Wordz",
+       "Type": "SPARK",
+       "ActionOnFailure": "CONTINUE",
+       "Args": [
+           "-files",
+           "s3://pluralsight-emr-lesson/spark/scripts/sparkWordCount.py",
+           "-input",
+           "s3://pluralsight-emr-lesson/spark/input/0001",
+           "-output",
+           "s3://pluralsight-emr-lesson/spark/output/"]
+    }
+  ]

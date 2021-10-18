@@ -1,0 +1,1 @@
+aws s3 cp s3://support.elasticmapreduce/training/datasets/wikistats/ s3://<YOUR_S3_BUCKET>/ --recursive

@@ -1,0 +1,7 @@
+// HBASE SHELL
+hbase snapshot create -n shellSnap -t table1
+
+// AWS CLI
+aws emr add-steps --cluster-id j-2RPZWQ653ANZ \
+--steps Name="HBase Shell Snapshot",Jar="command-runner.jar",\
+Args=[ "hbase", "snapshot", "create","-n","cliSnap","-t","table1"]

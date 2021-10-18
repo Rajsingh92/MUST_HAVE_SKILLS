@@ -1,0 +1,10 @@
+CREATE EXTERNAL TABLE prestodemo (
+language STRING,
+page_title STRING,
+hits BIGINT,
+retrived_size BIGINT
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ' '
+LINES TERMINATED BY '\n'
+LOCATION 's3://pluralsight-emr-lesson/presto/';

@@ -1,0 +1,2 @@
+INSERT OVERWRITE TABLE s3_table SELECT * 
+FROM demotable;

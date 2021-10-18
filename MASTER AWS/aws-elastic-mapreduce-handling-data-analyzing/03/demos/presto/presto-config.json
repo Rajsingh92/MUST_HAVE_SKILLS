@@ -1,0 +1,11 @@
+[
+  {
+    "Classification": "presto-connector-postgresql",
+    "Properties": {
+      "connection-url": "jdbc:postgresql://mydemo.claisnvdq0gk.us-east-1.rds.amazonaws.com:5432/demodb",
+      "connection-user": "user1",
+      "connection-password": "Password123!"
+    },
+    "Configurations": []
+  }
+]

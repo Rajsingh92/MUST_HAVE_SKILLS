@@ -1,0 +1,3 @@
+create 'table1', 'family1'
+put 'table1', 'row1', 'family1:col1', 'hello'
+get 'table1', 'row1'

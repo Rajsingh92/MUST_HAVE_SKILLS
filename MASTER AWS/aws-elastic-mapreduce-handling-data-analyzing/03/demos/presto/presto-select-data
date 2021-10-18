@@ -1,0 +1,13 @@
+SELECT language, page_title, AVG(hits) AS avg_hits
+FROM default.prestodemo
+WHERE language = 'es'
+GROUP BY language, page_title
+ORDER BY avg_hits DESC
+LIMIT 10;
+
+SELECT language, page_title, AVG(hits) AS avg_hits
+FROM default.prestodemo
+WHERE language = 'en'
+GROUP BY language, page_title
+ORDER BY avg_hits DESC
+LIMIT 10;

@@ -1,0 +1,20 @@
+[
+    {
+        "Name":"CopyS3 step",
+        "Args":["s3-dist-cp","--s3Endpoint=s3.amazonaws.com","--src=s3://pluralsight-emr-lesson/logs/%CLUSTER_ID%/node/","--dest=hdfs:///output","--srcPattern=.*[a-zA-Z,]+"],
+        "ActionOnFailure":"CONTINUE",
+        "Type":"CUSTOM_JAR",
+        "Jar":"command-runner.jar"
+    }
+]
+
+// ANDRU SPECIFIC EXAMPLE
+[
+    {
+        "Name":"CopyS3 venue step",
+        "Args":["s3-dist-cp","--s3Endpoint=s3.amazonaws.com","--src=s3://pluralsight-emr-lesson/redshift/","--dest=hdfs:///output"],
+        "ActionOnFailure":"CONTINUE",
+        "Type":"CUSTOM_JAR",
+        "Jar":"command-runner.jar"
+    }
+]
