@@ -85,7 +85,9 @@ A Multi Tired architecture is a distributed data approach. This process cannot b
 
 
 -  Components of a Data Warehouse
-Different data warehousing systems have different structures. Some may have an ODS (operational data store), while some may have multiple data marts. Some may have a small number of data sources, while some may have dozens of data sources. In view of this, it is far more reasonable to present the different layers of a data warehouse architecture rather than discussing the specifics of any one system.
+Different data warehousing systems have different structures. Some may have an ODS (operational data store), while some may have multiple data marts. 
+Some may have a small number of data sources, while some may have dozens of data sources. In view of this, it is far more reasonable to present the 
+different layers of a data warehouse architecture rather than discussing the specifics of any one system.
 
 In general, all data warehouse systems have the following layers:
 
@@ -100,7 +102,9 @@ Metadata Layer
 System Operations Layer
 
 - Purpose of a Staging Area in Data Warehouse Architecture 
-This is where data is stored prior to being scrubbed and transformed into a data warehouse / data mart. Having one common area makes it easier for subsequent data processing / integration. Based on the business architecture and design there can be more than one staging area which can be termed with different naming conventions. 
+This is where data is stored prior to being scrubbed and transformed into a data warehouse / data mart. Having one common area makes it 
+easier for subsequent data processing / integration. Based on the business architecture and design there can be more than one staging area 
+which can be termed with different naming conventions. 
 
 
 - Advantages of Traditional warehouse
@@ -113,7 +117,8 @@ Security: data and access
 
 
 - Limitations of Traditional Data Warehouses
-There are considerable disadvantages involved in moving data from multiple, often highly disparate, data sources to one data warehouse that translate into long implementation time, high cost, lack of flexibility, dated information and limited capabilities.
+There are considerable disadvantages involved in moving data from multiple, often highly disparate, data sources to one data warehouse 
+that translate into long implementation time, high cost, lack of flexibility, dated information and limited capabilities.
 
 Other disadvantages are discussed in the video. 
 
@@ -143,7 +148,9 @@ An ODS is designed for relatively simple queries on small amounts of data (such 
 An ODS is similar to your short term memory in that it stores only very recent information; in comparison, the data warehouse is more like long term memory in that it stores relatively permanent information.
 
 - Define ODS
-The typical definition of an operational data store (ODS) is that it’s a set of logically related data structures within a database. The data within an ODS is integrated, volatile and at a non-historical granular level that is designed to address a set of operational functions for a specific business purpose. The ODS must also be based on the enterprise standards for data management for the organization.
+The typical definition of an operational data store (ODS) is that it’s a set of logically related data structures within a database. 
+The data within an ODS is integrated, volatile and at a non-historical granular level that is designed to address a set of operational functions for 
+a specific business purpose. The ODS must also be based on the enterprise standards for data management for the organization.
 
 
 - Staging Vs ODS
@@ -165,36 +172,46 @@ Please refer to the additional resources of this section which contains the Info
 
 8. OLAP
 - OLAP Overview
-OLAP (Online Analytical Processing) is the technology behind many Business Intelligence (BI) applications. OLAP is a powerful technology for data discovery, including capabilities for limitless report viewing, complex analytical calculations, and predictive “what if” scenario (budget, forecast) planning.
+  OLAP (Online Analytical Processing) is the technology behind many Business Intelligence (BI) applications. OLAP is a powerful technology for data discovery,
+  including capabilities for limitless report viewing, complex analytical calculations, and predictive “what if” scenario (budget, forecast) planning.
 
 
-- OLTP Vs OLAP - Part 1_U
-- OLTP (On-line Transaction Processing) is characterized by a large number of short on-line transactions (INSERT, UPDATE, DELETE). The main emphasis for OLTP systems is put on very fast query processing, maintaining data integrity in multi-access environments and an effectiveness measured by number of transactions per second. In OLTP database there is detailed and current data, and schema used to store transnational databases is the entity model (usually 3NF). 
+- OLTP Vs OLAP 
+- OLTP (On-line Transaction Processing) is characterized by a large number of short on-line transactions (INSERT, UPDATE, DELETE). 
+  The main emphasis for OLTP systems is put on very fast query processing, maintaining data integrity in multi-access environments 
+  and an effectiveness measured by number of transactions per second. In OLTP database there is detailed and current data, and schema 
+  used to store transnational databases is the entity model (usually 3NF). 
+- OLAP (On-line Analytical Processing) is characterized by relatively low volume of transactions. Queries are often very complex and 
+  involve aggregations. For OLAP systems a response time is an effectiveness measure. OLAP applications are widely used by Data Mining 
+  techniques. In OLAP database there is aggregated, historical data, stored in multi-dimensional schemas (usually star schema).
 
-- OLAP (On-line Analytical Processing) is characterized by relatively low volume of transactions. Queries are often very complex and involve aggregations. For OLAP systems a response time is an effectiveness measure. OLAP applications are widely used by Data Mining techniques. In OLAP database there is aggregated, historical data, stored in multi-dimensional schemas (usually star schema).
+- OLTP (On-line Transaction Processing) is characterized by a large number of short on-line transactions (INSERT, UPDATE, DELETE). 
+  The main emphasis for OLTP systems is put on very fast query processing, maintaining data integrity in multi-access environments and 
+  an effectiveness measured by number of transactions per second. In OLTP database there is detailed and current data, and schema used to 
+  store transnational databases is the entity model (usually 3NF). 
+- OLAP (On-line Analytical Processing) is characterized by relatively low volume of transactions. Queries are often very complex and involve 
+  aggregations. For OLAP systems a response time is an effectiveness measure. OLAP applications are widely used by Data Mining techniques. 
+  In OLAP database there is aggregated, historical data, stored in multi-dimensional schemas (usually star schema).
 
 
-- OLTP Vs OLAP - Part 2
-- OLTP (On-line Transaction Processing) is characterized by a large number of short on-line transactions (INSERT, UPDATE, DELETE). The main emphasis for OLTP systems is put on very fast query processing, maintaining data integrity in multi-access environments and an effectiveness measured by number of transactions per second. In OLTP database there is detailed and current data, and schema used to store transnational databases is the entity model (usually 3NF). 
-
-- OLAP (On-line Analytical Processing) is characterized by relatively low volume of transactions. Queries are often very complex and involve aggregations. For OLAP systems a response time is an effectiveness measure. OLAP applications are widely used by Data Mining techniques. In OLAP database there is aggregated, historical data, stored in multi-dimensional schemas (usually star schema).
-
-
-- OLAP Architecture - MOLAP
-MOLAP (multidimensional online analytical processing) is online analytical processing (OLAP) that indexes directly into a multidimensional database.
+- MOLAP
+  MOLAP (multidimensional online analytical processing) is online analytical processing (OLAP) that indexes directly into a multidimensional database.
 
 
 - ROLAP
-Relational online analytical processing (ROLAP) is a form of online analytical processing (OLAP) that performs dynamic multidimensional analysis of data stored in a relational database rather than in a multidimensional database (which is usually considered the OLAP standard).
+  Relational online analytical processing (ROLAP) is a form of online analytical processing (OLAP) that performs dynamic multidimensional analysis of 
+  data stored in a relational database rather than in a multidimensional database (which is usually considered the OLAP standard).
 
 
 - HOLAP
-HOLAP (hybrid online analytical processing) is a combination of ROLAP (Relational OLAP) and MOLAP (Multidimensional OLAP) which are other possible implementations of OLAP. HOLAP allows storing part of the data in a MOLAP store and another part of the data in a ROLAP store, allowing a tradeoff of the advantages of each.
-
+  HOLAP (hybrid online analytical processing) is a combination of ROLAP (Relational OLAP) and MOLAP (Multidimensional OLAP) which are other possible 
+  implementations of OLAP. HOLAP allows storing part of the data in a MOLAP store and another part of the data in a ROLAP store, allowing a tradeoff of 
+  the advantages of each.
 
 
 - DOLAP
-DOLAP (Desktop OLAP or Database OLAP)provide multidimensional analysis locally in the client machine on the data collected from relational or multidimensional database servers.
+  DOLAP (Desktop OLAP or Database OLAP)provide multidimensional analysis locally in the client machine on the data collected from relational or 
+  multidimensional database servers.
 
 
 
@@ -407,7 +424,11 @@ Normalization.
 - ER Data Model - Differences between CDM, LDM and PDM
 Here we compare these three types of data models. 
 
-We can see that the complexity increases from conceptual to logical to physical. This is why we always first start with the conceptual data model (so we understand at high level what are the different entities in our data and how they relate to one another), then move on to the logical data model (so we understand the details of our data without worrying about how they will actually implemented), and finally the physical data model (so we know exactly how to implement our data model in the database of choice). In a data warehousing project, sometimes the conceptual data model and the logical data model are considered as a single deliverable.
+We can see that the complexity increases from conceptual to logical to physical. This is why we always first start with the conceptual data model 
+(so we understand at high level what are the different entities in our data and how they relate to one another), then move on to the logical data model 
+(so we understand the details of our data without worrying about how they will actually implemented), and finally the physical data model 
+(so we know exactly how to implement our data model in the database of choice). In a data warehousing project, sometimes the conceptual data model 
+and the logical data model are considered as a single deliverable.
 
 
 - ER Data Model - Disadvantages
