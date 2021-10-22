@@ -1,0 +1,25 @@
+,columns,missing values count
+0,months_as_customer,0
+1,policy_csl,0
+2,policy_deductable,0
+3,policy_annual_premium,0
+4,umbrella_limit,0
+5,insured_sex,0
+6,insured_education_level,0
+7,insured_occupation,0
+8,insured_relationship,0
+9,capital-gains,0
+10,capital-loss,0
+11,incident_type,0
+12,collision_type,90
+13,incident_severity,0
+14,authorities_contacted,0
+15,incident_hour_of_the_day,0
+16,number_of_vehicles_involved,0
+17,property_damage,187
+18,bodily_injuries,0
+19,witnesses,0
+20,police_report_available,176
+21,injury_claim,0
+22,property_claim,0
+23,vehicle_claim,0

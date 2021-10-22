@@ -1,0 +1,19 @@
+# docker-compose.yml
+# specify a version of the compose
+version: '3.7'
+# you can add multiple services
+services:
+ # specify service name. we call our service: api
+ api:
+ # specify image name
+ image: bert:api
+ # the command that you would like to run inside the container
+ command: /home/abhishek/.local/bin/gunicorn api:app --bind
+0.0.0.0:5000 --workers 4
+ # mount the volume
+ volumes:
+ -
+/home/abhishek/workspace/approaching_almost/input/:/home/abhishek/data/
+ # this ensures that our ports from container will be
+ # exposed as it is
+ network_mode: host
