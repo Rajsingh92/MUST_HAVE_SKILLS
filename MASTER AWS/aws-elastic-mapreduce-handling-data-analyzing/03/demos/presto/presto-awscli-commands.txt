@@ -1,5 +1,0 @@
-aws emr create-cluster --name PrestoConnector --release-label emr-5.25.0 \
---applications Name=Hadoop Name=Hive Name=Pig Name=Presto \
---use-default-roles --ec2-attributes KeyName=admin \
---instance-groups InstanceGroupType=MASTER,InstanceCount=1,InstanceType=m4.large,BidPrice=0.5 InstanceGroupType=CORE,InstanceCount=1,InstanceType=m4.large,BidPrice=0.5 \
---log-uri s3://pluralsight-emr-lesson/logs --enable-debugging

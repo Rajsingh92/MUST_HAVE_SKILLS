@@ -1,26 +1,15 @@
 
 Why spark
-03:53
 Hadoop EcoSystem
-04:49
 Spark Architecture and EcoSystem
-08:08
 DataBricks SignUp
-03:41
 Create DataBricks Notebook
-04:52
 Download Spark and Dependencies
-03:16
 Java Setup on Window
-04:16
 Python Setup on Window
-01:31
 Spark Setup on Window
-02:58
 Hadoop Setup on Window
-02:40
 Runing Spark on Window
-02:49
 Java Download on MAC
 01:52
 Installing JDK on MAC

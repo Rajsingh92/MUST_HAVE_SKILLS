@@ -1,3 +1,0 @@
-aws emr add-steps --cluster-id <CLUSTER_ID> --steps Type=HIVE,Name="Hive from CLI",ActionOnFailure=CONTINUE,Args=[-f,<S3_SCRIPT_PATH>,-d,INPUT=<S3_INPUT_PATH>,-d,OUTPUT=s<S3_OUTPUT_PATH>]
-
-aws emr list-steps --cluster-id <CLUSTER_ID> --step-ids <STEP_ID_FROM_ADD_STEPS_COMMAND>
