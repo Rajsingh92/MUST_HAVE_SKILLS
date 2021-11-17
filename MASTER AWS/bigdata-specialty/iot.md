@@ -1,0 +1,71 @@
+# AWS IoT
+- Once a device sends a msg to IOT:
+     - Can automatically write to:
+        - ElasticSearch
+        - Kinesis Firehose
+        - Kinesis Streams
+        - DynamoDB
+        - Machine Learning
+    - Can also:
+        - Trigger cloudwatch alerts
+        - Write to S3
+        - SQS
+        - SNS
+        - Lambda
+- Devices report their state by publishing messages, in JSON format, on MQTT topics.
+- When a msg is published on an MQTT topic, the msg is sent to the AWS IoT MQTT message broker, which sends it to all clients subscribed to that topic.
+- Communication between a device and IOT is protected with x.509 certificates.
+    - IOT can generate the certificates or you can use your own.
+    - The certificate must be registered and activated with AWS IOT and then copied onto your device.
+    - When the device communicates with AWS IOT, it presents the certificate as a credential.
+    - Recommnded that all devices have an entry in the registry. Registry stores pairs `{device, certificate}`.
+- Rules
+    - You can create rules to define one or more actions based on the data in a msg
+        - (ex: update dynamoDB table, send msgs to other devices)
+    - Rules use expressions to filter msgs. Rules contain an IAM role that grants AWS IOT permission to access the AWS resources related to the action.
+    - Messages are transformed using a SQL based syntax
+    - Example: Rule:
+        - query: `SELECT * FROM 'sdk/test/Python'`
+        - action: Insert msg into DynamoDB table
+    
+- Device Shadow (Thing Shadow)
+    - two entries:
+        - last reported state
+        - desired state
+    - State is reported as a JSON object containing both last reported state and desired state.
+    - Acts as a message channel to send commands to a thing.
+
+- All traffic to and from AWS IOT is encrypted over TLS.
+- You are responsible for managing the x.509 certificates in the devices.
+- You are responsible for assigning unique identities to each device asd managing permissions for a device or group of devices.
+- Authentication can be done with AWS IOT auth or custom auth
+    - AWS IOT auth
+        - The message broker (device gateway) is responsible for authenticating devices, and adhering to access permissions using policies
+    - custom auth
+        - your authorizer service is responsible for authenticating devices and providing and AWS IOT/IAM policy to authorize actions.
+- Device Gateway / Message Broker:
+    - Maintains sessions and subscriptions for all connected devices
+    - allows secure 1-1 and 1-to-many communication (using topics)
+    - Protocols:
+        - MQTT
+        - Websockets
+        - HTTP
+    - Scales automatically
+- AWS IOT supports four types of identity principals for authentication:
+    - x.509 certificates (for devices)
+    - IAM users, groups and roles (for desktop applications / CLI commands)
+    - Amazon cognito (for mobile applications)
+    - Federated identities (web / desktop apps)
+
+
+- X.509 Certificates
+    - https://docs.aws.amazon.com/iot/latest/developerguide/x509-certs.html
+    - aws recommends each device is given a unique certificate. Devices must support certificate rotation and replacement to handle certificate expiration.
+    - X.509 certificates are issued by a trusted entity called a certification authority (CA).
+    - The CA maintains one or more special certificates called CA certificates that it uses to issue X.509 certificates.
+    - Only the certification authority has access to CA certificates.
+ 
+- AWS IOT operations APIs:
+    - Control plane API for admin tasks
+    - Data plane API for sending and receiving data from AWS IOT
+
