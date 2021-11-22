@@ -1,0 +1,13 @@
+For the final demo in this module, we'll reuse the Order class from before and make a small modification to the ShippingCost class.  This time, ShippingCost expects a callable function instead of an object implementing AbsStrategy.
+
+When the shipping_cost method is called, it in turn calls the strategy function passed in at instantiation time.
+
+In the main module, functions and lambdas will replace the strategy objects used before.
+
+Here the fedex_strategy is defined as a function that simply returns the value 4.  The ups_strategy is defined using lambda syntax, though this is not considered the best Python style.
+
+Then, for the Postal Service test, another lambda is used, this time directly in the instantiation of the ShippingCost object.
+
+As before, if everything works as expected, a "Tests passed" message is printed.  I guess I'd better run this to see if I get that message!
+
+It worked!  So here is a variation of the strategy pattern, using functions and lambdas instead of class definitions.

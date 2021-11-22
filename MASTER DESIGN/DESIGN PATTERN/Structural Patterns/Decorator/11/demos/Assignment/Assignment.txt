@@ -1,0 +1,6 @@
+If you go shopping for a new car, you might notice that the same option
+has a differnt price for different car models.
+
+Enhance the final solution using the decorator pattern to handle this by
+by adding a premium property to the car models and use it in the 
+final cost calculation in the decorators

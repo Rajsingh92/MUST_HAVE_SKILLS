@@ -1,0 +1,17 @@
+In this demo we will look at the implementation of the strategy pattern for our application. 
+
+Let's first look at the Context -- the ShippingCost class.
+
+There's not much to this version, compared to the first attempt.  This class takes in a strategy object in the constructor and saves the reference for later.  Then in the shipping_cost method, it uses that reference and executes its "calculate" method on the order supplied.
+
+Next up, here is the Abstract Base Class, AbsStrategy.  It follows the template discussed in the introductory module for this course, defining one abstract method, the calculate method.
+
+For our Concrete Strategies, we need one class for each strategy we are implementing. One for Federal Express, the Postal Service and finally UPS.  Each of these must implement the abstract method defined in the ABC.  For this demo, the calculate methods simply return the value we're lokoing for.
+
+With structure in place, lets look at the main program.  It starts out by importing the necessary objects, then has a section to test each of the shiping methods, as before.  This time, however, we instantiate a new, concrete strategy object and pass that to the ShippingCost class, which knows how to talk to any object that implements the ABC AbsStrategy.
+
+Finally, the cost is computed and compared with the desired result.
+
+Let's run this!
+
+Great! All our tests pass

@@ -1,0 +1,16 @@
+A real-life family is represented using the composite pattern developed
+in this module.  Unfortunately, following a death in the family, the
+will of the departed must be executed.  The will stipulates that the
+deceased's estate must be converted to cash and distributed evenly
+amongst the individuals in the family according to this formula:
+
+1. The first generation receives an equal proportion of the value of
+the estate
+
+2. If a member of the first generation is a composite, that portion
+will be further divided amongst its members and following the same
+rule, its descendants
+
+After holding an auction, the grand sum of $314,159.36 is realized as
+cash. Modify the code to distribute this amongst the heirs according
+to the formula given, showing at least two decimal places

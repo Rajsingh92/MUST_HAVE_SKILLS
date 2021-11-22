@@ -1,0 +1,12 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    // Controls the font family.
+    "editor.fontFamily": "Roboto Mono", "Consolas, 'Courier New', monospace",
+
+    // Controls the font size.
+    "editor.fontSize": 14,
+
+    // Python settings
+    "python.pythonPath": "c:/python27/python.exe"
+    ,"python.linting.enabled": false
+}

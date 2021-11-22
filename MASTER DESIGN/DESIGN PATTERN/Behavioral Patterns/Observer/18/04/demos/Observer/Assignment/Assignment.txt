@@ -1,0 +1,8 @@
+In the classic observer pattern, state values are pulled from the subject
+by the observer.  It is also possible to push values from the subject
+to each observer when state changes.
+
+The AbsSubject abstract base class that is used in this module has
+support for operating in push mode.  
+
+Modify the ContextObserver solution to operate in push mode.

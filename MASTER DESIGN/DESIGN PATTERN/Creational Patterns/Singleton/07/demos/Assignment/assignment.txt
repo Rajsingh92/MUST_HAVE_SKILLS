@@ -1,0 +1,22 @@
+You are assigned the task of providing classes to control access to two different
+databases.  You want to use the Singleton pattern but actually think the MonoState
+variant would do the job best.
+
+You also think that the metaclass approach is cleaner and provides better
+separation of concerns.  
+
+To implement and test this setup:
+
+1. Write a MonoState class that implements the metaclass pattern but also is able
+   to handle shared state among instances of many classes (like the Singleton metaclass
+   presented in the module).
+
+2. Write a Database class that uses your new MonoState metaclass and implements methods
+   to connect to a database, execute a query and close the connection. (You can fake
+   the implementation of these methods if you like.)
+
+3. Write two new database classes that inherit from the Database class in step 2.
+
+4. Test your classes by instantiating the new classes at least twice and running
+   queries on them. You need to show that all instances of a given class share
+   the same state.

@@ -1,0 +1,18 @@
+You work for a customer service company. Your company has three categories of customers:
+1. Small to medium businesses (SMB)
+2. Enterprise businesses (ENT)
+3. Government agencies and departments (GOV)
+
+You've been asked to build a library to provide easy access to classes for all 
+three types of customers.  The programs that will use your library must not know
+any details of the implementations of those classes, but know that they all implement
+one property and one method:
+    Property: name, the name of the customer
+    Method:   send_invoice(), a method to send an invoice to the customer
+
+You decide to build the library using the Simple Factory pattern and use dynamic
+imports.
+
+Write the library and provide a simple test program for it. (It is not necessary
+to fully implement the send_invoice method.  Any indication that it is called
+is sufficient.)

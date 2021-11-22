@@ -1,0 +1,6 @@
+You work for a large bank.  It groups its customers into savers and 
+investors to support these families.  For each family there can be three
+investors.   commercial, government and retail
+
+Using the Abstract Base Factory pattern, write and test Python classes
+to be used in the banking application.

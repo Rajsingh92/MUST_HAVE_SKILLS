@@ -1,0 +1,9 @@
+You have an application that reads from and updates objects in a Customer
+collection.  It has been working well but you've just been asked to make the collection thread-safe.
+
+That means that you need to serialize update operations to ensure that the objects will not be updated from other threads.
+
+Write a locking proxy that implements the serialization for customer objects.  
+If you like, also build a proxy to serialize access to the collection itself for insert and delete operations.
+
+The Customer class and Customers collection have been provided.

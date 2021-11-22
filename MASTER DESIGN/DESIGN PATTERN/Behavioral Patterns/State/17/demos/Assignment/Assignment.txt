@@ -1,0 +1,11 @@
+You're happy with the shopping cart development so far.  However, you just 
+received a new requirement:
+
+A customer should be able to suspend his shopping at any point in time and
+resume shopping later.  That means a new state: suspended and two new 
+transistions: suspend and resume
+
+Additionally, you realized you really don't need all the chatty feedback 
+in the current state objects.  Eliminate that but leave in some code
+to raise an appropriate exception if some transition is called while in 
+wrong state.
