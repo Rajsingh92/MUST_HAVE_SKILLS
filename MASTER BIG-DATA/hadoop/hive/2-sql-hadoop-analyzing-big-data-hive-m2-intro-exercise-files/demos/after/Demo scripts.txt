@@ -1,0 +1,40 @@
+/* Launch Hive */
+hive
+!hadoop fs -ls /pluralsight/;
+
+!hadoop fs -ls /pluralsight/userinfo;
+
+!hadoop fs -put /home/pluralsight/ml-100k/u.user /pluralsight/userinfo;
+
+CREATE EXTERNAL TABLE users (
+user_id INT,
+age INT,
+gender STRING,
+occupation STRING,
+zip_code STRING
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE
+LOCATION '/pluralsight/userinfo';
+
+show tables;
+
+describe formatted userinfo;
+
+SELECT * FROM users limit 100;
+
+SELECT age, occupation FROM users;
+
+SELECT count(*) FROM users WHERE occupation = 'artist';
+
+!clear;
+
+CREATE TABLE occupation_count STORED AS RCFile AS SELECT COUNT(*), occupation FROM users GROUP BY occupation;
+
+CREATE TABLE occupation2 LIKE occupation_count;
+
+DESCRIBE FORMATTED occupation2;
+
+SELECT * FROM occupation2;
+

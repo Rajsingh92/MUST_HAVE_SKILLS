@@ -31,8 +31,20 @@ FROM (
     LEAD(num,1,null) OVER (ORDER BY id)  LEAD_num
     FROM Logs
 ) t
-WHERE num = LAG_num AND num = LEAD_num
+WHERE num = LAG_num AND num = LEAD_num;
 
 
 
+SELECT DISTINCT
+    l1.Num AS ConsecutiveNums
+FROM
+    Logs l1,
+    Logs l2,
+    Logs l3
+WHERE
+    l1.Id = l2.Id - 1
+    AND l2.Id = l3.Id - 1
+    AND l1.Num = l2.Num
+    AND l2.Num = l3.Num;
 
+    

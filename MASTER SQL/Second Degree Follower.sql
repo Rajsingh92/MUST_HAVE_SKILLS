@@ -21,7 +21,8 @@ Result:
 */
 
 
-select follower, num from (
+select follower, num 
+from (
         select f1.follower follower, count(distinct f2.follower) num
         from follow f1 left join follow f2
         on f1.follower = f2.followee
