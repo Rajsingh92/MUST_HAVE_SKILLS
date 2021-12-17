@@ -1,0 +1,43 @@
+Hadoop commands used in demo:
+
+hadoop fs -ls /
+
+hadoop fs -ls /something
+
+mkdir /home/pluralsight
+cd /home/pluralsight
+
+wget http://www.grouplens.org/system/files/ml-100k.zip
+unzip ml-100k.zip
+
+ls -lsa
+
+less u.item
+q
+
+hadoop fs -mkdir /pluralsight/movies
+hadoop fs -mkdir /pluralsight/userinfo
+
+cd ml-100k
+
+hadoop fs -put u.item /pluralsight/movies
+hadoop fs -put u.info /pluralsight/userinfo
+
+hadoop fs -cp /pluralsight/movies/u.item /pluralsight/
+hadoop fs -ls /pluralsight
+
+hadoop fs -rm /pluralsight/u.item
+
+hadoop fs -mkdir /pluralsight/test
+hadoop fs -cp /pluralsight/movies/u.item /pluralsight/usreinfo/u.info /pluralsight/test
+hadoop fs -ls /pluralsight/test
+
+hadoop fs -rmr -skipTrash /pluralsight/test
+
+hadoop fs -cat /pluralsight/movies/*
+
+hadoop fs -cat /pluralsight/movies/* | less
+q
+
+--------------------------------------------
+Using HUE, delete the u.info file from /pluralsight/userinfo and upload the u.user file instead

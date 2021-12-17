@@ -1,0 +1,97 @@
+ls /media/sf_VM_Share/LogFiles/
+
+hadoop fs -mkdir /pluralsight/logs/pv_ext/somedatafor_7_11 /pluralsight/logs/pv_ext/2013/08/11/log/data
+
+hive
+
+USE pluralsight;
+
+CREATE EXTERNAL TABLE page_views_ext (logtime STRING, userid INT, ip STRING, page STRING, ref STRING, os STRING, os_ver STRING, agent STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t'
+LOCATION '/pluralsight/logs/pv_ext/';
+
+DESCRIBE FORMATTED page_views_ext;
+
+!CLEAR;
+
+EXPLAIN SELECT * FROM page_views_ext WHERE userid = 13;
+
+DROP TABLE page_views_ext;
+!clear;
+
+
+CREATE EXTERNAL TABLE page_views_ext (logtime STRING, userid INT, ip STRING, page STRING, ref STRING, os STRING, os_ver STRING, agent STRING)
+PARTITIONED BY (y STRING, m STRING, d STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t'
+LOCATION '/pluralsight/logs/pv_ext/';
+
+!hadoop fs -put /media/sf_VM_Share/LogFiles/log_2013711_155354.log /pluralsight/logs/pv_ext/somedatafor_7_11
+
+SELECT * FROM page_views_ext;
+
+ALTER TABLE page_views_ext ADD PARTITION (y='2013', m='07', d='11')
+LOCATION '/pluralsight/logs/pv_ext/somedatafor_7_11';
+
+SELECT * FROM page_views_ext LIMIT 100;
+
+DESCRIBE FORMATTED page_views_ext;
+
+EXPLAIN SELECT * FROM page_views_ext WHERE userid=13 AND m='07'AND d='11' LIMIT 100;
+
+SELECT * FROM page_views_ext WHERE m='07'AND d='11' LIMIT 100;
+
+!hadoop fs -put /media/sf_VM_Share/LogFiles/log_2013811_16136.log /pluralsight/logs/pv_ext/2013/08/11/log/data
+
+ALTER TABLE page_views_ext ADD PARTITION (y='2013', m='08', d='11')
+LOCATION '/pluralsight/logs/pv_ext/2013/08/11/log/data';
+
+SELECT COUNT(*) as RecordCount, m FROM page_views_ext WHERE d='11' GROUP BY m;
+
+!hadoop fs -put /media/sf_VM_Share/LogFiles/log_2013720_162256.log /pluralsight/logs/pv_ext/y=2013/m=07/d=20/data.log
+
+SELECT * FROM page_views_ext WHERE m='07' AND d='20' LIMIT 100;
+
+MSCK REPAIR TABLE page_views_ext;
+
+SELECT * FROM page_views_ext WHERE m='07' AND d='20' LIMIT 100;
+
+-- Hive Managed Tables
+
+CREAT TABLE page_views (logtime STRING, userid INT, ip STRING, page STRING, ref STRING, os STRING, os_ver STRING, agent STRING)
+PARTITIONED BY (y STRING, m STRING, d STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t';
+
+LOAD DATA LOCAL INPATH '/media/sf_VM_Share/LogFiles/log_2013805_16210.log'
+OVERWRITE INTO TABLE page_views PARTITION (y='2013', m='08', d='05');
+
+!hadoop fs -ls /apps/hive/warehouse/pluralsight.db/page_views/;
+
+-- Multi-Table inserts
+
+!hadoop fs -mkdir /pluralsight/logs/multi_insert;
+
+!hadoop fs -put /media/sf_VM_Share/LogFiles/log_2012613_161117.log /media/sf_VM_Share/LogFiles/log_2013803_15590.log /pluralsight/logs/multi_insert
+
+
+CREATE EXTERNAL TABLE staging (logtime STRING, userid INT, ip STRING, page STRING, ref STRING, os STRING, os_ver STRING, agent STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t'
+LOCATION '/pluralsight/logs/multi_insert';
+
+INSERT INTO TABLE page_views PARTITION (y, m, d)
+SELECT logtime, userid, ip, page, ref, os, os_ver, agent, substr(logtime, 7, 4), substr(logtime, 1, 2), substr(logtime, 4, 2)
+FROM staging;
+
+SET hive.exec.dynamic.partition.mode=nonstrict;
+
+INSERT INTO TABLE page_views PARTITION (y, m, d)
+SELECT logtime, userid, ip, page, ref, os, os_ver, agent, substr(logtime, 7, 4), substr(logtime, 1, 2), substr(logtime, 4, 2)
+FROM staging;
+
+SELECT * FROM page_views WHERE y='2012' LIMIT 100;
+
+select regexp_replace(logtime, '/', '-') from staging;
+select substr(logtime, 7, 4), substr(logtime, 1, 2), substr(logtime, 4, 2) from staging;

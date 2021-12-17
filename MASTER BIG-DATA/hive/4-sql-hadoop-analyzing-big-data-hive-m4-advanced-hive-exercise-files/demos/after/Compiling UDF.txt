@@ -1,0 +1,9 @@
+java -version
+cd /media/sf_VM_Share/Scripts/
+
+ls /usr/lib/hive/lib/hive-exec*
+
+javac -target 1.6 -cp $(ls /usr/lib/hive/lib/hive-exec*.jar):/usr/lib/hadoop/hadoop-core.jar com/pluralsight/udf/MyReverse.java
+
+ADD JAR /media/sf_VM_Share/Scripts/myudf.jar;
+CREATE TEMPORARY FUNCTION revs AS 'com.pluralsight.udf.MyReverse';

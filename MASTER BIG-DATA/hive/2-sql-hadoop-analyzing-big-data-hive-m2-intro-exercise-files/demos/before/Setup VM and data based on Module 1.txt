@@ -1,0 +1,8 @@
+mkdir /home/pluralsight
+wget http://www.grouplens.org/system/files/ml-100k.zip
+unzip ml-100k.zip
+hadoop fs -mkdir /pluralsight/movies
+hadoop fs -mkdir /pluralsight/userinfo
+cd ml-100k
+hadoop fs -put u.item /pluralsight/movies
+hadoop fs -put u.user /pluralsight/userinfo

@@ -1,0 +1,96 @@
+-- Example using sed
+select transform(movie_title) using '/bin/sed "s/[^ ][^ ]*/(&)/g"' AS mt FROM pluralsight.movies limit 100;
+
+-- Don't forget to use dos2unix on a windows-created script file
+dos2unix /media/sf_VM_Share/Scripts/streaming/timeonsite.py
+ADD FILE /media/sf_VM_Share/Scripts/streaming/timeonsite.py;
+
+CREATE TABLE IF NOT EXISTS pluralsight.tos (userid INT, timeonsite INT);
+
+FROM (
+ FROM pluralsight.page_views
+ SELECT userid, logtime
+ DISTRIBUTE BY userid SORT BY userid, logtime
+) src
+INSERT OVERWRITE TABLE pluralsight.tos
+SELECT TRANSFORM (src.userid, src.logtime) USING './timeonsite.py'
+AS (userid, timeonsite);
+
+
+-- You can also replace TRANSFORM with REDUCE
+FROM (
+ FROM temp1
+ SELECT userid, logtime
+ GROUP BY userid, logtime
+ DISTRIBUTE BY userid SORT BY userid, logtime
+) src
+REDUCE (src.userid, src.logtime) USING './timeonsite.py'
+AS userid, timeonsite;
+
+-- Time on site using Hive's new analyticsfunctions
+FROM (
+FROM (
+SELECT
+  userid
+ ,unix_timestamp(logtime, 'MM/dd/yyyy HH:mm:ss') uxt
+FROM
+ pluralsight.page_views
+) src
+SELECT
+  src.userid
+ ,src.uxt - LAG(src.uxt, 1, src.uxt) OVER (PARTITION BY src.userid ORDER BY uxt) diff
+) diffs
+SELECT
+  userid
+ ,SUM(diff)
+GROUP BY
+  userid
+
+-- Another example for Lag
+SELECT
+a, LAG(a, 3, 0) OVER (PARTITION BY b ORDER BY C ROWS 3 PRECEDING)
+FROM T;
+
+
+-- Ranking functions demo
+CREATE TABLE pluralsight.sales_employee
+(
+ name STRING,
+ territory STRING,
+ sales_amount DECIMAL
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t';
+
+LOAD DATA LOCAL INPATH '/media/sf_VM_Share/data/*'
+OVERWRITE INTO TABLE pluralsight.sales_employee
+
+
+SELECT
+     name
+    ,territory
+    ,sales_amount
+    ,ROW_NUMBER() OVER ( ORDER BY sales_amount )
+    ,RANK(sales_amount) OVER ( ORDER BY sales_amount )
+    ,DENSE_RANK(sales_amount) OVER ( ORDER BY sales_amount )
+FROM
+    pluralsight.sales_employee
+ORDER BY
+    name;
+
+-- Running total
+SELECT
+    name
+   ,territory
+   ,sales_amount
+   ,SUM(sales_amount) OVER (PARTITION BY territory ORDER BY name ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)
+FROM
+   pluralsight.sales_employeeles_amount );
+
+ORDER BY
+   name;
+ROM
+    pluralsight.sales_employee
+ORDER BY
+    name;
+
