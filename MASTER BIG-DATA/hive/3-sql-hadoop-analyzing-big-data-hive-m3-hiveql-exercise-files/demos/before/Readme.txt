@@ -1,1 +1,0 @@
-The log file generator can be used on a Windows operating system and assumes you have the .Net framework 3.0 or higher installed.
