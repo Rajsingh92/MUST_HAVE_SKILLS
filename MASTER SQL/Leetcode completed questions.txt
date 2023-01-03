@@ -1,3 +1,15 @@
+1082
+1083
+1445
+183 - skip
+1204
+1193 -  skip
+1783 -  skip
+1613
+
+
+
+
 https://www.c-sharpcorner.com/article/most-asked-sql-queries-in-interview-questions/
 
 https://www.java67.com/2013/04/10-frequently-asked-sql-query-interview-questions-answers-database.html
