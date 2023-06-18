@@ -6,6 +6,11 @@ INNER JOIN Department D
 ON E.DeptNo=D.DeptNo
 ;
 
+/*
+df_result = df_employee.join(df_department, df_employee["DeptNo"] == df_department["DeptNo"], "inner") \
+    .select(df_employee["EmpName"], df_department["DeptName"], df_department["Location"])
+*/
+
 
 
 
@@ -21,6 +26,13 @@ LEFT OUTER JOIN Employee E
 ON E.DeptNo=D.DeptNo
 GROUP BY D.DeptName
 ;
+
+/*
+df_result = df_department.join(df_employee, df_department["DeptNo"] == df_employee["DeptNo"], "left_outer") \
+    .groupBy(df_department["DeptName"]) \
+    .agg(max(df_employee["Salary"]).alias("MaxSalary"), count(df_employee["EmpName"]).alias("TotEmp"))
+*/
+
 
 
 
@@ -41,6 +53,13 @@ HAVING AVG(Salary) > 10000
 ;
 
 
+/*
+df_result = df_employee.join(df_department,df_department["DeptNo"]==df_employee["DeptNo"],"inner") \
+                .where(df_department["DeptNo"] == 200) \
+                .groupBy(df_employee["Designation"]) \
+                .agg(max(df_employee["salary"]).alias("MaxSalary"),min(df_employee["salary"]).alias("MinSalary"),avg(df_employee["salary"]).alias("AvgSalary")) \
+                .having(col("AvgSalary")>10000)
+*/
 
 
 

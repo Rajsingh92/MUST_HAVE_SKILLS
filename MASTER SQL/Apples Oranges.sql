@@ -73,3 +73,45 @@ select sale_date , sum(if(trim(upper(fruit)) ='APPLES',sold_num,-sold_num))
 from sales
 group by sale_date;
 
+
+
+
+/*
+from pyspark.sql.types import StringType, IntegerType, StructType, StructField
+from pyspark.sql.functions import trim, upper, col, sum, when
+
+
+# Define the schema for the Sales DataFrame
+sales_schema = StructType([
+    StructField("sale_date", StringType(), nullable=False),
+    StructField("fruit", StringType(), nullable=False),
+    StructField("sold_num", IntegerType(), nullable=False)
+])
+
+# Create the Sales DataFrame with the specified schema
+sales_data = [
+    ('2020-05-01', 'apples', 10),
+    ('2020-05-01', 'oranges', 8),
+    ('2020-05-02', 'apples', 15),
+    ('2020-05-02', 'oranges', 15),
+    ('2020-05-03', 'apples', 20),
+    ('2020-05-03', 'oranges', 0),
+    ('2020-05-04', 'apples', 15),
+    ('2020-05-04', 'oranges', 16)
+]
+
+sales_df = spark.createDataFrame(sales_data, schema=sales_schema)
+
+df = sales_df.groupBy('sale_date').agg(
+    sum(when(upper(col("fruit"))=='APPLES',col('sold_num')).otherwise(-col('sold_num'))).alias("sold_num")
+)
+
+df.show()
+
+*/
+
+
+
+
+
+

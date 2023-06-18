@@ -52,9 +52,7 @@ select * from t where ids not in (select distinct customer_id from Customers );
 
 from pyspark.sql import SparkSession
 from pyspark.sql.types import IntegerType, StringType, StructType, StructField
-
-# create spark session
-spark = SparkSession.builder.appName('Convert Table to DataFrame').getOrCreate()
+from pyspark.sql.functions import col, max
 
 
 # create schema for dataframe
@@ -75,6 +73,27 @@ df = spark.createDataFrame(data, schema)
 
 # show dataframe
 df.show()
+
+
+
+
+
+
+# Find the maximum customer_id
+max_customer_id = df.select(max("customer_id")).first()[0]
+
+# Create a DataFrame with the sequence of ids
+ids_df = spark.range(1, max_customer_id + 1).select(col("id").alias("ids"))
+
+# Perform a left anti-join to get the ids not present in the "Customers" table
+result_df = ids_df.join(df, ids_df["ids"] == df["customer_id"], "leftanti")
+
+# Show the result DataFrame
+result_df.show()
+
+# Stop the SparkSession
+spark.stop()
+
 
 */
 
