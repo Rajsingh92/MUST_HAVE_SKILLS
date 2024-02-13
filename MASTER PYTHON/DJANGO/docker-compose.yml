@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  customer_app:
+    build: ./Customer_service
+    command: bash -c "python3 ./Customer_service/manage.py makemigrations && python3 ./Customer_service/manage.py migrate && python3 ./Customer_service/manage.py runserver 0.0.0.0:8001  "
+    volumes:
+      - .:/app
+    ports:
+      - "8001:8001"
+    restart: always
+    network_mode: host
+  
+  account_app:
+    build: ./Account_service
+    command: bash -c "python3 ./Account_service/manage.py makemigrations && python3 ./Account_service/manage.py migrate && python3 ./Account_service/manage.py runserver 0.0.0.0:8002"
+    volumes:
+      - .:/app
+    ports:
+      - "8002:8002"
+    restart: always
+    depends_on:
+      - customer_app
+    network_mode: host
+
+

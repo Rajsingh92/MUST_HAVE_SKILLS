@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+ @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
+    td:nth-of-type(1):before { content: "Name"; }
+    td:nth-of-type(2):before { content: "Department"; }
+    td:nth-of-type(3):before { content: "Role"; }
+    td:nth-of-type(4):before { content: "Assign"; }
+    td:nth-of-type(5):before { content: "Action"; }
+}
+</style>
+
+<div class="container">
+    {% if employees %}
+    <br>
+    <table role="table" class="text-center" style="margin : auto">
+        <thead role="rowgroup">
+        <tr role="row">
+            <th role="columnheader" width="20%">Name</th>
+            <th role="columnheader" width="20%">Department</th>
+            <th role="columnheader" width="30%">Role</th>
+            <th role="columnheader" width="15%">Assign</th>
+            <th role="columnheader" width="15%">Action</th>
+        </tr>
+        </thead>
+        <tbody role="rowgroup">
+        {% for employee in employees %}
+        {% if not employee.is_admin %}
+        <tr role="row">
+            <td role="cell">{{ employee.first_name }} {{ employee.last_name }}</td>
+            <td role="cell">{{ employee.department }}</td>
+            <td role="cell">{{ employee.role }}</td>
+            <td role="cell"><a href="{{ url_for('admin.assign_department_to_employee', id=employee.id) }}">Assign</a>
+            </td>
+            <td role="cell"><a href="{{ url_for('admin.delete_employee', id=employee.id) }}">Delete</a></td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

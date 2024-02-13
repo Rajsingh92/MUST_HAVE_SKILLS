@@ -1,0 +1,13 @@
+Anagram Palindrome 
+
+Given a string S, Check if characters of the given string can be rearranged to form a palindrome. 
+
+Example 1:
+
+Input:
+S = "geeksogeeks"
+Output: Yes
+Explanation: The string can be converted into a palindrome: geeksoskeeg
+
+
+

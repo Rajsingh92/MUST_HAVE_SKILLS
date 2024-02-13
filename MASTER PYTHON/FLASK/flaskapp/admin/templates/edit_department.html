@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="login-form bg-light mt-4 p-4">
+                    <form action="" method="POST" class="row g-3">
+                        {{ form.hidden_tag() }}
+                        <h4>Edit Department</h4>
+                        <div class="col-12">
+                            {{ form.name.label }}
+                            {% if form.name.errors %}
+                                {{ form.name(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.name.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.name(class="form-control", value=dname) }}
+                            {% endif %}
+                        </div>
+                        <div class="col-12">
+                            {{ form.submit(class="btn btn-dark float-end") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+    <div>
+        <h1 class="text-center">Admin Dashboard</h1>
+        <div class="container text-center">
+            <button type="button" class="btn btn-outline-primary">
+                <a href="{{ url_for('admin.list_employees') }}">Employees</a>
+            </button>
+            <br><br>
+<!--            <button type="button" class="btn btn-outline-primary">-->
+<!--                <a href="{{ url_for('admin.add_role') }}">Search Employee</a>-->
+<!--            </button>-->
+<!--            <br><br>-->
+            <button type="button" class="btn btn-outline-primary">
+                <a href="{{ url_for('admin.list_departments') }}">Departments</a>
+            </button>
+            <br><br>
+            <button type="button" class="btn btn-outline-primary">
+                <a href="{{ url_for('admin.list_roles') }}">Roles</a>
+            </button>
+        </div>
+    </div>
+{% endblock %}
+

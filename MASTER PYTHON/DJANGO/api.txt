@@ -1,0 +1,45 @@
+# docker exec -it container /bin/bash
+# Stop all running containers: docker stop $(docker ps -a -q)
+# Delete all stopped containers: docker rm $(docker ps -a -q)
+
+
+
+# post : http://localhost:8001/customers/
+
+# {
+#     "account_no": 12345,
+#     "name": "raj",
+#     "email": "abc@abc.com",
+#     "phone": "123456789",
+#     "city": "city",
+#     "postal_code": "0761",
+#     "state": "state",
+#     "country": "country",
+#     "address": "address"
+# }
+
+
+# get : http://localhost:8001/customers/
+# get : http://localhost:8001/customers/12345
+
+
+# get  : http://localhost:8000/accounts/
+# post : http://localhost:8000/accounts/
+# {
+#     "account_no" : "12456"
+# }
+# get  : http://localhost:8000/accounts/123456
+# delete : http://localhost:8000/accounts/123456
+
+# http://localhost:8000/accounts/add_money/1
+
+# {
+#     "amount" : 5
+# }
+
+
+# http://localhost:8000/accounts/withdraw_money/1
+
+# {
+#     "amount" : 5
+# }
